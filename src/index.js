@@ -23,8 +23,8 @@ exports.onPostBuild = async (_, { uncssOptions }, cb) => {
     raw: originalCSS,
     htmlroot: rootPath
   })
-  // remove comments
-  const purifiedCSS = stripComments(_purifiedCSS, { preserve: false })
+  // remove comments and newlines
+  const purifiedCSS = stripComments(_purifiedCSS, { preserve: false }).replace(/\n/g, '')
 
   // replace CSS in files
   const replaceCSS = replaceInFileFactory(originalCSS, purifiedCSS)
