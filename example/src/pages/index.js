@@ -1,11 +1,9 @@
 import React from 'React'
-
-import '../styles/red.css'
-import '../styles/blue.css'
+import '../styles/index.css'
 
 const IndexPage = () => (
   <div>
-    <p className='blue'>I'm Blue</p>
+    <p className='red'>hello world</p>
   </div>
 )
 
