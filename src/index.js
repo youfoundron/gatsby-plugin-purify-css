@@ -2,7 +2,8 @@ import { resolve } from 'path'
 import { all } from 'bluebird'
 import purify from 'purify-css'
 
-import { readFile } from './fsAsync'
+// import { readFile } from './fsAsync'
+import prepareStyles from './prepareStyles'
 import getPathsWithExt from './getPathsWithExt'
 import selectAndReplaceInFileFactory from './selectAndReplaceInFileFactory'
 
@@ -15,14 +16,15 @@ exports.onPostBuild = async (_, {purifyOptions = defaultOptions}, cb) => {
 
   // get file paths
   const jsFiles = await getPathsWithExt('js', rootPath)
+  const cssFiles = await getPathsWithExt('css', rootPath)
   const htmlFiles = await getPathsWithExt('html', rootPath)
-  const [cssMap, cssFile] = await getPathsWithExt('css', rootPath) // eslint-disable-line
 
   // sanitize purify inputs
   const htmlFileSanitizations = htmlFiles.map(removeCSS)
   await all(htmlFileSanitizations)
+
   const content = [...jsFiles, ...htmlFiles]
-  const rawCSS = await readFile(cssFile, {encoding: 'utf-8'})
+  const rawCSS = await prepareStyles(cssFiles)
 
   // purify CSS
   const purifiedCSS = await (new Promise((resolve, reject) => (
