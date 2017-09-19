@@ -47,6 +47,7 @@
     "lint"
   ],
   "standard": {
+    "ignore": "example",
     "parser": "babel-eslint",
     "globals": [
       "it",
