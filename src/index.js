@@ -2,7 +2,6 @@ import { resolve } from 'path'
 import { all } from 'bluebird'
 import purify from 'purify-css'
 
-// import { readFile } from './fsAsync'
 import prepareStyles from './prepareStyles'
 import getPathsWithExt from './getPathsWithExt'
 import selectAndReplaceInFileFactory from './selectAndReplaceInFileFactory'
