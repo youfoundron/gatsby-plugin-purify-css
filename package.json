@@ -1,0 +1,48 @@
+{
+  "name": "gatsby-plugin-uncss",
+  "version": "0.0.0",
+  "description": "Gatsby plugin for removing unused CSS in production.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "standard | snazzy",
+    "clean": "rm -f gatsby-node.js",
+    "build": "webpack",
+    "prepublish": "npm run clean && npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "klaw": "^2.1.0",
+    "through2-filter": "^2.0.0",
+    "uncss": "^0.15.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.26.0",
+    "jest": "^21.1.0",
+    "pre-commit": "^1.2.2",
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.3",
+    "webpack": "^3.6.0",
+    "webpack-make-rule": "^2.0.0",
+    "webpack-node-externals": "^1.6.0"
+  },
+  "pre-commit": [
+    "test",
+    "lint"
+  ],
+  "standard": {
+    "parser": "babel-eslint",
+    "globals": [
+      "it",
+      "expect",
+      "describe"
+    ]
+  }
+}
