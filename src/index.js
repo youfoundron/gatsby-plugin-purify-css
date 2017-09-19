@@ -1,30 +1,33 @@
-import purify from 'purify-css'
 import { resolve } from 'path'
-import { promisify, all } from 'bluebird'
+import { all } from 'bluebird'
+import purify from 'purify-css'
 
-import sanitizeCSS from './sanitizeCSS'
+import { readFile } from './fsAsync'
 import getPathsWithExt from './getPathsWithExt'
 import selectAndReplaceInFileFactory from './selectAndReplaceInFileFactory'
 
-const purifyAsync = promisify(purify) // eslint-disable-line
+const defaultOptions = { info: true, minify: true }
 
-exports.onPostBuild = async (_, {purifyOptions = {minify: true}}, cb) => {
+exports.onPostBuild = async (_, {purifyOptions = defaultOptions}, cb) => {
   const rootPath = resolve('public')
+  const selector = '#gatsby-inlined-css'
+  const removeCSS = selectAndReplaceInFileFactory(selector, '')
 
   // get file paths
   const htmlFiles = await getPathsWithExt('html', rootPath)
-  const [jsStyles, compiledStyles] = await getPathsWithExt('css', rootPath) // eslint-disable-line
+  const [cssMap, cssFile] = await getPathsWithExt('css', rootPath) // eslint-disable-line
 
-  // purify CSS, remove comments, sourcemaps, and newlines
-  // let purifiedCSS = await purifyAsync(htmlFiles, cssFiles, purifyOptions)
-  let purifiedCSS = await new Promise((resolve, reject) => {
-    console.log(htmlFiles, compiledStyles, purifyOptions)
-    purify(htmlFiles, compiledStyles, purifyOptions, resolve)
-  })
-  purifiedCSS = sanitizeCSS(purifiedCSS)
+  // sanitize purify inputs
+  const htmlFileSanitizations = htmlFiles.map(removeCSS)
+  await all(htmlFileSanitizations)
+  const rawCSS = await readFile(cssFile, {encoding: 'utf-8'})
+
+  // purify CSS
+  const purifiedCSS = await (new Promise((resolve, reject) => (
+    purify(htmlFiles, rawCSS, purifyOptions, resolve)
+  )))
 
   // replace CSS in html files
-  const selector = '#gatsby-inlined-css'
   const replaceCSS = selectAndReplaceInFileFactory(selector, purifiedCSS)
   const htmlFileUpdates = htmlFiles.map(replaceCSS)
   await all(htmlFileUpdates)
