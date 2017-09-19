@@ -62,5 +62,6 @@ typings/
 
 .DS_Store
 gatsby-node.js
+!example/plugins/develop-purify-css/gatsby-node.js
 
 # End of https://www.gitignore.io/api/node
