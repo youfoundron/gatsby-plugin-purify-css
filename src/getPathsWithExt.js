@@ -2,7 +2,7 @@ import klaw from 'klaw'
 import { extname } from 'path'
 import filter from 'through2-filter'
 
-const filterByExt = (ext: string) => filter.obj(item => (
+const filterByExt = ext => filter.obj(item => (
   extname(item.path) === `.${ext}`
 ))
 
