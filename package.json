@@ -15,7 +15,7 @@
     "lint": "standard | snazzy",
     "clean": "rm -f gatsby-node.js",
     "build": "webpack",
-    "prepublish": "npm run clean && npm run build"
+    "prepublishOnly": "npm run clean && npm run build"
   },
   "repository": "git@github.com:rongierlach/gatsby-plugin-uncss.git",
   "author": "Ron Gierlach <rongierlach@gmail.com>",
