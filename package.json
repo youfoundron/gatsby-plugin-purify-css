@@ -22,6 +22,7 @@
   "license": "GPL-3.0",
   "dependencies": {
     "bluebird": "^3.5.0",
+    "cheerio": "^1.0.0-rc.2",
     "klaw": "^2.1.0",
     "strip-css-comments": "^3.0.0",
     "through2-filter": "^2.0.0",
