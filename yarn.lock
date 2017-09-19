@@ -3453,8 +3453,8 @@ punycode@^1.2.4, punycode@^1.4.1:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
 
 purify-css@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/purify-css/-/purify-css-1.2.5.tgz#c4b9ec90735765f3e247ba6a3b49f132f3482500"
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/purify-css/-/purify-css-1.2.6.tgz#56c2b58e4e1134247c6fdc20ba443b51b45e8b2f"
   dependencies:
     clean-css "^4.0.12"
     glob "^7.1.1"
