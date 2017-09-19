@@ -5,7 +5,7 @@ import { promisify, all } from 'bluebird'
 import { readFile } from './fsAsync'
 import sanitizeCSS from './sanitizeCSS'
 import getPathsWithExt from './getPathsWithExt'
-import replaceInFileFactory from './replaceInFileFactory'
+import selectAndReplaceInFileFactory from './selectAndReplaceInFileFactory'
 
 const uncssAsync = promisify(uncss)
 
@@ -17,19 +17,19 @@ exports.onPostBuild = async (_, { uncssOptions }, cb) => {
   const [cssFile] = await getPathsWithExt('css', rootPath)
 
   // evalute CSS
-  const _originalCSS = await readFile(cssFile, { encoding: 'utf-8' })
-  const _purifiedCSS = await uncssAsync(htmlFiles, {
+  let originalCSS = await readFile(cssFile, { encoding: 'utf-8' })
+  let purifiedCSS = await uncssAsync(htmlFiles, {
     ...uncssOptions,
-    raw: _originalCSS,
+    raw: originalCSS,
     htmlroot: rootPath
   })
 
-  // remove comments and newlines
-  const originalCSS = sanitizeCSS(_originalCSS)
-  const purifiedCSS = sanitizeCSS(_purifiedCSS)
+  // remove comments, sourcemaps, and newlines
+  purifiedCSS = sanitizeCSS(purifiedCSS)
 
-  // replace CSS in files
-  const replaceCSS = replaceInFileFactory(originalCSS, purifiedCSS)
+  // replace CSS in html files
+  const selector = '#gatsby-inlined-css'
+  const replaceCSS = selectAndReplaceInFileFactory(selector, purifiedCSS)
   const htmlFileUpdates = htmlFiles.map(replaceCSS)
   await all(htmlFileUpdates)
 
