@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-purify-css",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Gatsby plugin for removing unused CSS in production.",
   "keywords": [
     "gatsby",
