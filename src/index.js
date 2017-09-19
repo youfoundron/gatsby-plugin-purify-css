@@ -1,6 +1,7 @@
 import uncss from 'uncss'
 import { resolve } from 'path'
 import { promisify, all } from 'bluebird'
+import stripComments from 'strip-comments'
 
 import { readFile } from './fsAsync'
 import getPathsWithExt from './getPathsWithExt'
@@ -22,8 +23,8 @@ exports.onPostBuild = async (_, { uncssOptions }, cb) => {
     raw: originalCSS,
     htmlroot: rootPath
   })
-  // remove pesky comment
-  const purifiedCSS = _purifiedCSS.replace(/\/\*.*\n/, '')
+  // remove comments
+  const purifiedCSS = stripComments(_purifiedCSS)
 
   // replace CSS in files
   const replaceCSS = replaceInFileFactory(originalCSS, purifiedCSS)
