@@ -23,6 +23,7 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "klaw": "^2.1.0",
+    "strip-comments": "^0.4.4",
     "through2-filter": "^2.0.0",
     "uncss": "^0.15.0"
   },
