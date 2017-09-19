@@ -25,6 +25,8 @@
     "bluebird": "^3.5.0",
     "cheerio": "^1.0.0-rc.2",
     "klaw": "^2.1.0",
+    "postcss": "^6.0.11",
+    "postcss-discard-duplicates": "^2.1.0",
     "purify-css": "^1.2.5",
     "through2-filter": "^2.0.0"
   },
