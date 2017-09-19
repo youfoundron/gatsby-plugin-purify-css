@@ -1,5 +1,5 @@
 module.exports = {
   plugins: [
-    'gatsby-plugin-uncss'
+    'gatsby-plugin-purify-css'
   ]
 }
