@@ -1,12 +1,12 @@
 {
-  "name": "gatsby-plugin-uncss",
-  "version": "1.1.0",
+  "name": "gatsby-plugin-purify-css",
+  "version": "0.0.0",
   "description": "Gatsby plugin for removing unused CSS in production.",
   "keywords": [
     "gatsby",
     "plugin",
-    "uncss",
     "purify",
+    "uncss",
     "css"
   ],
   "main": "index.js",
@@ -17,16 +17,16 @@
     "build": "webpack",
     "prepublishOnly": "npm run clean && npm run build"
   },
-  "repository": "git@github.com:rongierlach/gatsby-plugin-uncss.git",
+  "repository": "git@github.com:rongierlach/gatsby-plugin-purify-css.git",
   "author": "Ron Gierlach <rongierlach@gmail.com>",
   "license": "GPL-3.0",
   "dependencies": {
     "bluebird": "^3.5.0",
     "cheerio": "^1.0.0-rc.2",
     "klaw": "^2.1.0",
+    "purify-css": "^1.2.5",
     "strip-css-comments": "^3.0.0",
-    "through2-filter": "^2.0.0",
-    "uncss": "^0.15.0"
+    "through2-filter": "^2.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.0",
