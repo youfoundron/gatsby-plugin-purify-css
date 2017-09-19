@@ -5,7 +5,7 @@ import { readFile } from './fsAsync'
 
 const concatFiles = async filePaths => {
   const fileTexts = []
-  for (let filePath in filePaths) {
+  for (let filePath of filePaths) {
     const text = await readFile(filePath, {encoding: 'utf-8'})
     fileTexts.push(text)
   }
@@ -14,6 +14,6 @@ const concatFiles = async filePaths => {
 
 export default async cssFiles => {
   const css = await concatFiles(cssFiles)
-  const dedupedCSS = await postcss([dedupe]).process(css)
-  return dedupedCSS
+  const result = await postcss([dedupe]).process(css)
+  return result.css
 }
