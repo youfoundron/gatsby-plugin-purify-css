@@ -1,5 +1,6 @@
 module.exports = {
   plugins: [
-    'gatsby-plugin-purify-css'
+    'develop-purify-css'
+    // 'gatsby-plugin-purify-css'
   ]
 }
