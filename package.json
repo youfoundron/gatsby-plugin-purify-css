@@ -47,8 +47,8 @@
     "lint"
   ],
   "jest": {
-    "coveragePathIgnorePatterns": [
-      "/example",
+    "testPathIgnorePatterns": [
+      "/example/",
       "/node_modules/"
     ]
   },
