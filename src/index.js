@@ -14,17 +14,19 @@ exports.onPostBuild = async (_, {purifyOptions = defaultOptions}, cb) => {
   const removeCSS = selectAndReplaceInFileFactory(selector, '')
 
   // get file paths
+  const jsFiles = await getPathsWithExt('js', rootPath)
   const htmlFiles = await getPathsWithExt('html', rootPath)
   const [cssMap, cssFile] = await getPathsWithExt('css', rootPath) // eslint-disable-line
 
   // sanitize purify inputs
   const htmlFileSanitizations = htmlFiles.map(removeCSS)
   await all(htmlFileSanitizations)
+  const content = [...jsFiles, ...htmlFiles]
   const rawCSS = await readFile(cssFile, {encoding: 'utf-8'})
 
   // purify CSS
   const purifiedCSS = await (new Promise((resolve, reject) => (
-    purify(htmlFiles, rawCSS, purifyOptions, resolve)
+    purify(content, rawCSS, purifyOptions, resolve)
   )))
 
   // replace CSS in html files
