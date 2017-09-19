@@ -2,7 +2,6 @@ import purify from 'purify-css'
 import { resolve } from 'path'
 import { promisify, all } from 'bluebird'
 
-import { readFile } from './fsAsync'
 import sanitizeCSS from './sanitizeCSS'
 import getPathsWithExt from './getPathsWithExt'
 import selectAndReplaceInFileFactory from './selectAndReplaceInFileFactory'
@@ -14,13 +13,10 @@ exports.onPostBuild = async (_, {purifyOptions = {minify: true}}, cb) => {
 
   // get file paths
   const htmlFiles = await getPathsWithExt('html', rootPath)
-  const [cssFile] = await getPathsWithExt('css', rootPath)
+  const cssFiles = await getPathsWithExt('css', rootPath)
 
-  // evalute CSS
-  let originalCSS = await readFile(cssFile, { encoding: 'utf-8' })
-  let purifiedCSS = await purifyAsync(htmlFiles, originalCSS, purifyOptions)
-
-  // remove comments, sourcemaps, and newlines
+  // purify CSS, remove comments, sourcemaps, and newlines
+  let purifiedCSS = await purifyAsync(htmlFiles, cssFiles, purifyOptions)
   purifiedCSS = sanitizeCSS(purifiedCSS)
 
   // replace CSS in html files
