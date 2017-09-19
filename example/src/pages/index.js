@@ -1,9 +1,8 @@
 import React from 'React'
-import '../styles/index.css'
 
 const IndexPage = () => (
   <div>
-    <p className='red'>hello world</p>
+    <h1 className='used'>hello world</h1>
   </div>
 )
 

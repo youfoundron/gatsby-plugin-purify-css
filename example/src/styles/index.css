@@ -1,9 +1,0 @@
-/* This class is used and will be injected */
-.red {
-  color: #ff0000;
-}
-
-/* This class is unused and will not be injected */
-.blue {
-  color: #0000ff;
-}

@@ -1,0 +1,15 @@
+/* importing a library */
+@import '~tachyons';
+
+/* importing a local file */
+@import 'react-perfect-scrollbar/dist/css/styles.css';
+
+/* This class is used and will be included in production */
+.used {
+  color: #ff0000;
+}
+
+/* This class is unused and will not be included in production */
+.unused {
+  color: #0000ff;
+}
