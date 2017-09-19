@@ -28,6 +28,7 @@ node_modules
 *.un~
 yarn.lock
 src
+example
 flow-typed
 coverage
 decls
