@@ -46,6 +46,12 @@
     "test",
     "lint"
   ],
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "/example",
+      "/node_modules/"
+    ]
+  },
   "standard": {
     "ignore": "example",
     "parser": "babel-eslint",
