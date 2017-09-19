@@ -15,6 +15,7 @@
     "lint": "standard | snazzy",
     "clean": "rm -f gatsby-node.js",
     "build": "webpack",
+    "develop": "webpack --watch",
     "prepublishOnly": "npm run clean && npm run build"
   },
   "repository": "git@github.com:rongierlach/gatsby-plugin-purify-css.git",
