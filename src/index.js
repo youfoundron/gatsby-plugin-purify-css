@@ -1,4 +1,4 @@
-import uncss from 'uncss'
+import purify from 'purify-css'
 import { resolve } from 'path'
 import { promisify, all } from 'bluebird'
 
@@ -7,9 +7,9 @@ import sanitizeCSS from './sanitizeCSS'
 import getPathsWithExt from './getPathsWithExt'
 import selectAndReplaceInFileFactory from './selectAndReplaceInFileFactory'
 
-const uncssAsync = promisify(uncss)
+const purifyAsync = promisify(purify)
 
-exports.onPostBuild = async (_, { uncssOptions }, cb) => {
+exports.onPostBuild = async (_, {purifyOptions = {minify: true}}, cb) => {
   const rootPath = resolve('public')
 
   // get file paths
@@ -18,11 +18,7 @@ exports.onPostBuild = async (_, { uncssOptions }, cb) => {
 
   // evalute CSS
   let originalCSS = await readFile(cssFile, { encoding: 'utf-8' })
-  let purifiedCSS = await uncssAsync(htmlFiles, {
-    ...uncssOptions,
-    raw: originalCSS,
-    htmlroot: rootPath
-  })
+  let purifiedCSS = await purifyAsync(htmlFiles, originalCSS, purifyOptions)
 
   // remove comments, sourcemaps, and newlines
   purifiedCSS = sanitizeCSS(purifiedCSS)
