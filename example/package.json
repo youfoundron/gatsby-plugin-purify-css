@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "gatsby": "^1.9.38",
-    "gatsby-link": "^1.6.16"
+    "gatsby-link": "^1.6.16",
+    "gatsby-plugin-purify-css": "^1.0.0"
   }
 }
