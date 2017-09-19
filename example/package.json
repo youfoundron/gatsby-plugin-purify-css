@@ -15,7 +15,7 @@
     "gatsby": "^1.9.38",
     "gatsby-link": "^1.6.16",
     "gatsby-plugin-postcss-sass": "^1.0.12",
-    "gatsby-plugin-purify-css": "^2.0.0",
+    "gatsby-plugin-purify-css": "^2.1.0",
     "postcss-import": "^11.0.0",
     "react-perfect-scrollbar": "^0.2.2",
     "tachyons": "^4.8.1"
