@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-uncss",
-  "version": "0.1.4",
+  "version": "1.0.0",
   "description": "Gatsby plugin for removing unused CSS in production.",
   "keywords": [
     "gatsby",
