@@ -6,11 +6,15 @@ import prepareStyles from './prepareStyles'
 import getPathsWithExt from './getPathsWithExt'
 import selectAndReplaceInFileFactory from './selectAndReplaceInFileFactory'
 
+const defaultId = 'gatsby-inlined-css'
 const defaultOptions = { info: true, minify: true }
 
-exports.onPostBuild = async (_, {purifyOptions = defaultOptions}, cb) => {
+exports.onPostBuild = async (_, {
+  styleId = defaultId,
+  purifyOptions = defaultOptions
+}, cb) => {
   const rootPath = resolve('public')
-  const selector = '#gatsby-inlined-css'
+  const selector = `#${styleId}`
   const removeCSS = selectAndReplaceInFileFactory(selector, '')
 
   // get file paths
