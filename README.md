@@ -17,7 +17,12 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-purify-css'
       options: {
-        purifyOptions: { /* ... */ }
+        /* Defaults */
+        styleId: 'gatsby-inlined-css',
+        purifyOptions: {
+          info: true,
+          minify: true
+        }
       }
     }
   ]
