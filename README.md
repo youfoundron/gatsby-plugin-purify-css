@@ -15,7 +15,7 @@ In your `gatsby-config.js` file:
 module.exports = {
   plugins: [
     {
-      resolve: 'gatsby-plugin-purify-css'
+      resolve: 'gatsby-plugin-purify-css',
       options: {
         /* Defaults */
         styleId: 'gatsby-inlined-css',
