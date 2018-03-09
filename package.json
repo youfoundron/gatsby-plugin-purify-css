@@ -3,6 +3,7 @@
   "version": "2.2.1",
   "description": "Gatsby plugin for removing unused CSS in production.",
   "keywords": [
+    "gatsby-plugin",
     "gatsby",
     "plugin",
     "purify",
