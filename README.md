@@ -6,6 +6,12 @@ A [Gatsby](https://github.com/gatsbyjs/gatsby) post-build plugin that implements
 Never worry about the size of your css framework again!  
 Updates your html files directly, removing any unused inline styles.
 
+## Gatsby 2
+
+This plugin does not (currently) work with Gatsby 2. The
+[purgecss](https://www.gatsbyjs.org/packages/gatsby-plugin-purgecss/) plugin
+does and might be a suitable alternative.
+
 ## Install
 `$ npm install gatsby-plugin-purify-css`
 
