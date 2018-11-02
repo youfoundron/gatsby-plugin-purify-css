@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 import { resolve } from 'path'
 import { all } from 'bluebird'
 import purify from 'purify-css'
